@@ -5,6 +5,7 @@
 import Link from "next/link";
 import { Sparkles } from "@/components/icons";
 import { cn } from "@/lib/utils";
+import { MegaMenu } from "@/components/mega-menu";
 // Inline site config so we don't depend on the workspace package
 const SUBDOMAINS = {
   ui: "https://ui.agezero.io",
@@ -44,6 +45,9 @@ export function CrossDomainNav({ active }: { active?: Subdomain }) {
           </span>
           {BRAND.shortName}
         </Link>
+        <div className="hidden lg:block">
+          <MegaMenu />
+        </div>
         <nav className="hidden items-center gap-1 lg:flex">
           {CROSS_NAV.map((item) => {
             const isActive = item.subdomain === active;
