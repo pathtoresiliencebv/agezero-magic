@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Sparkles } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import { MegaMenu } from "@/components/mega-menu";
-// Inline site config so we don't depend on the workspace package
+
 const SUBDOMAINS = {
   ui: "https://ui.agezero.io",
   templates: "https://templates.agezero.io",
@@ -16,8 +16,10 @@ const SUBDOMAINS = {
   skills: "https://skills.agezero.io",
   tools: "https://tools.agezero.io",
   seo: "https://seo.agezero.io",
+  connect: "https://connect.agezero.io",
 } as const;
 type Subdomain = keyof typeof SUBDOMAINS;
+
 const CROSS_NAV = [
   { label: "UI", subdomain: "ui" as const, href: SUBDOMAINS.ui },
   { label: "Templates", subdomain: "templates" as const, href: SUBDOMAINS.templates },
@@ -27,7 +29,9 @@ const CROSS_NAV = [
   { label: "SEO", subdomain: "seo" as const, href: SUBDOMAINS.seo },
   { label: "MCP", subdomain: "mcp" as const, href: SUBDOMAINS.mcp },
   { label: "CLI", subdomain: "cli" as const, href: SUBDOMAINS.cli },
+  { label: "Connect", subdomain: "connect" as const, href: SUBDOMAINS.connect },
 ];
+
 const BRAND = {
   name: "AgeZero UI",
   shortName: "AgeZero",
@@ -61,7 +65,6 @@ export function CrossDomainNav({ active }: { active?: Subdomain }) {
                     ? "bg-accent text-foreground"
                     : "text-muted-foreground hover:bg-accent/60 hover:text-foreground"
                 )}
-                
               >
                 {item.label}
               </Link>
@@ -97,7 +100,15 @@ export function CrossDomainFooter() {
             </Link>
           ))}
         </div>
-        <p className="mt-4 text-[10px] text-muted-foreground/70">
+        <a
+          href="https://agezero.nl"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-4 inline-block text-xs text-primary hover:underline"
+        >
+          🏠 agezero.nl — The full AgeZero platform
+        </a>
+        <p className="mt-2 text-[10px] text-muted-foreground/70">
           {BRAND.tagline} · MIT licensed
         </p>
       </div>
